@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JaretBot 💗 Edith</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial;
+    background: radial-gradient(circle at top, #050514, #0b0b2a, #000);
+    overflow:hidden;
+    color:white;
+}
+
+/* 🌟 estrellas */
+.star{
+    position:fixed;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    opacity:0.5;
+    animation: twinkle 4s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+    0%,100%{opacity:0.2;}
+    50%{opacity:1;}
+}
+
+/* ✨ partículas */
+.particle{
+    position:fixed;
+    width:3px;
+    height:3px;
+    background:rgba(255,255,255,0.6);
+    border-radius:50%;
+    pointer-events:none;
+    animation: floatParticle 8s linear infinite;
+}
+
+@keyframes floatParticle{
+    0%{transform:translateY(100vh);opacity:0;}
+    20%{opacity:0.8;}
+    100%{transform:translateY(-10vh);opacity:0;}
+}
+
+/* 💬 contenedor chat */
+.chat{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:90%;
+    max-width:650px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+/* 💗 burbujas */
+.bubble{
+    padding:12px 15px;
+    border-radius:18px;
+    max-width:85%;
+    animation: pop 0.3s ease;
+    font-size:15px;
+    line-height:1.4;
+}
+
+/* 👤 pregunta */
+.q{
+    align-self:flex-start;
+    background:rgba(255,255,255,0.10);
+    border:1px solid rgba(255,255,255,0.15);
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.q:hover{
+    transform:scale(1.02);
+}
+
+/* 💗 respuesta */
+.r{
+    align-self:flex-end;
+    background:rgba(255,192,203,0.18);
+    box-shadow:0 0 15px rgba(255,192,203,0.15);
+    display:none;
+}
+
+/* ✨ animación */
+@keyframes pop{
+    from{transform:scale(0.9); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
+
+/* 🌸 título */
+h1{
+    text-align:center;
+    margin-top:10px;
+    font-size:22px;
+    color:#ffd6f3;
+    text-shadow:0 0 15px #ff7ac8;
+}
+
+/* =========================
+   🌌 MENÚ
+========================= */
+
+.menu-btn{
+    position:fixed;
+    top:15px;
+    right:15px;
+    padding:10px 16px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    color:white;
+    font-size:14px;
+    cursor:pointer;
+    z-index:999;
+}
+
+.menu{
+    position:fixed;
+    top:60px;
+    right:15px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    z-index:999;
+
+    opacity:0;
+    transform:translateY(-10px);
+    pointer-events:none;
+    transition:0.3s ease;
+}
+
+.menu.show{
+    opacity:1;
+    transform:translateY(0);
+    pointer-events:auto;
+}
+
+.menu a{
+    text-decoration:none;
+}
+
+.menu a div{
+    color:white;
+    padding:10px 14px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    font-size:14px;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌌 MENÚ -->
+<button class="menu-btn" onclick="toggleMenu()">☰ Menú</button>
+
+<div class="menu" id="menu">
+    <a href="home.html"><div>🌸 Inicio</div></a>
+    <a href="galeria.html"><div>📸 Galería</div></a>
+    <a href="razones.html"><div>❤️ Razones</div></a>
+    <a href="musica.html"><div>🎵 Música</div></a>
+    <a href="triste.html"><div>🫂 Triste</div></a>
+    <a href="dudas.html"><div>🌟 Dudas</div></a>
+    <a href="nuestro universo.html"><div>🌌 Universo</div></a>
+    <a href="jaretbot.html"><div>🤖 JaretBot</div></a>
+    <a href="minijuegos.html"><div>🎮 Juegos</div></a>
+    <a href="final.html"><div>💖 Final</div></a>
+</div>
+
+<h1>🤖 JaretBot 💗</h1>
+
+<div class="chat">
+
+<div class="bubble q" onclick="openMsg(this)">¿Me amas?</div>
+<div class="bubble r">Claro que te amo, mi vida. 💗</div>
+
+<div class="bubble q" onclick="openMsg(this)">¿Me extrañas?</div>
+<div class="bubble r">Te extraño incluso cuando te tengo enfrente.</div>
+
+<div class="bubble q" onclick="openMsg(this)">¿Piensas en mí?</div>
+<div class="bubble r">Eres mi primer pensamiento al despertar y el último antes de dormir.</div>
+
+<div class="bubble q" onclick="openMsg(this)">¿Soy bonita?</div>
+<div class="bubble r">Eres la niña más hermosa del mundo para mí.</div>
+
+<div class="bubble q" onclick="openMsg(this)">¿Siempre estarás conmigo?</div>
+<div class="bubble r">Mientras la vida me lo permita, quiero caminar a tu lado.</div>
+
+<div class="bubble q" onclick="openMsg(this)">¿Qué es lo que más te gusta de mí?</div>
+<div class="bubble r">No puedo elegir una sola cosa, porque amo todo de ti.</div>
+
+<div class="bubble q" onclick="openMsg(this)">¿Te acuerdas de nuestro primer beso?</div>
+<div class="bubble r">Jamás podría olvidarlo, fue el comienzo de algo que cambió mi vida.</div>
+
+<div class="bubble q" onclick="openMsg(this)">¿Quieres casarte conmigo?</div>
+<div class="bubble r">Mi respuesta siempre será sí. 💗</div>
+
+<div class="bubble q" onclick="openMsg(this)">¿Cuál es tu lugar favorito?</div>
+<div class="bubble r">Donde estés tú.</div>
+
+</div>
+
+<script>
+
+/* 🌌 menú */
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("show");
+}
+
+/* 🌟 estrellas */
+for(let i=0;i<140;i++){
+    let s=document.createElement("div");
+    s.className="star";
+    s.style.top=Math.random()*100+"vh";
+    s.style.left=Math.random()*100+"vw";
+    document.body.appendChild(s);
+}
+
+/* ✨ partículas */
+for(let i=0;i<40;i++){
+    let p=document.createElement("div");
+    p.className="particle";
+    p.style.top=Math.random()*100+"vh";
+    p.style.left=Math.random()*100+"vw";
+    p.style.animationDuration=(5+Math.random()*6)+"s";
+    document.body.appendChild(p);
+}
+
+/* 🤖 lógica */
+function openMsg(el){
+    let answer = el.nextElementSibling;
+
+    document.querySelectorAll(".r").forEach(r=>{
+        if(r !== answer) r.style.display="none";
+    });
+
+    answer.style.display =
+        answer.style.display === "block" ? "none" : "block";
+}
+
+</script>
+
+</body>
+</html>

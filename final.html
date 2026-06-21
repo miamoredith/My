@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Final del Universo 💗</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background: radial-gradient(circle at top, #050514, #0b0b2a, #000);
+overflow:hidden;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+}
+
+/* 🌟 estrellas */
+.star{
+position:fixed;
+width:2px;
+height:2px;
+background:white;
+border-radius:50%;
+opacity:0.5;
+animation: twinkle 4s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+0%,100%{opacity:0.2;}
+50%{opacity:1;}
+}
+
+/* ✨ partículas */
+.particle{
+position:fixed;
+width:3px;
+height:3px;
+background:rgba(255,255,255,0.6);
+border-radius:50%;
+animation: float 8s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);opacity:0;}
+20%{opacity:0.8;}
+100%{transform:translateY(-10vh);opacity:0;}
+}
+
+/* 💗 contenido */
+.container{
+z-index:2;
+padding:20px;
+max-width:500px;
+}
+
+h1{
+font-size:28px;
+text-shadow:0 0 20px #ff7ac8;
+}
+
+p{
+font-size:16px;
+opacity:0.9;
+margin-top:10px;
+}
+
+/* 💗 botones */
+button{
+margin-top:15px;
+padding:12px 18px;
+border:none;
+border-radius:12px;
+background:#ff7ac8;
+color:white;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+transform:scale(1.05);
+}
+
+/* 💗 corazones */
+.heart{
+position:fixed;
+font-size:20px;
+animation: fall 3s linear forwards;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh);opacity:1;}
+100%{transform:translateY(110vh);opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>🌌 Fin del Universo 💗</h1>
+
+<p>
+Este no es un final…<br>
+es un recordatorio de que todo esto nació de algo bonito 💗
+</p>
+
+<p>
+No importa dónde estés,<br>
+siempre habrá un universo donde tú eres mi persona favorita ✨
+</p>
+
+<button onclick="hug()">
+🤗 Abrázame
+</button>
+
+<button onclick="restart()">
+🔁 Volver al inicio
+</button>
+</div>
+
+<script>
+
+/* 🌟 estrellas */
+for(let i=0;i<120;i++){
+let s=document.createElement("div");
+s.className="star";
+s.style.top=Math.random()*100+"vh";
+s.style.left=Math.random()*100+"vw";
+document.body.appendChild(s);
+}
+
+/* ✨ partículas */
+for(let i=0;i<40;i++){
+let p=document.createElement("div");
+p.className="particle";
+p.style.top=Math.random()*100+"vh";
+p.style.left=Math.random()*100+"vw";
+document.body.appendChild(p);
+}
+
+/* 💗 abrazo */
+function hug(){
+
+for(let i=0;i<30;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerText="💗";
+h.style.left=Math.random()*100+"vw";
+h.style.top="-20px";
+document.body.appendChild(h);
+
+setTimeout(()=>{
+h.style.top="110vh";
+h.style.transition="3s";
+},50);
+
+setTimeout(()=>h.remove(),4000);
+}
+
+}
+
+/* 🔁 reinicio */
+function restart(){
+location.href="index.html";
+}
+
+</script>
+
+</body>
+</html>

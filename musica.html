@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Universo 💗 Edith</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #1a1a40, #0b0b1f);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* 🌟 estrellas */
+.star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: blink 2.5s infinite;
+}
+
+@keyframes blink {
+    0%,100% { opacity: 0.2; }
+    50% { opacity: 1; transform: scale(1.4); }
+}
+
+/* 📱 menú */
+.menu-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+.menu {
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.menu a { text-decoration: none; }
+
+.menu div {
+    width: 180px;
+    padding: 12px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    text-align: center;
+}
+
+/* 🌌 título */
+h1 {
+    text-align: center;
+    margin-top: 70px;
+    color: #ffd6f3;
+    text-shadow: 0 0 12px #ff7ac8;
+}
+
+/* 🎵 música */
+.musica-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 15px;
+    padding: 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 18px;
+    padding: 15px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 18px rgba(255,192,203,0.25);
+}
+
+.song {
+    font-weight: bold;
+    color: #ffd6f3;
+}
+
+.artist {
+    font-size: 13px;
+    opacity: 0.8;
+}
+
+.quote {
+    font-size: 13px;
+    margin-top: 6px;
+    color: #ffffffcc;
+}
+
+/* 🫙 frasco */
+.frasco {
+    width: 280px;
+    height: 280px;
+    margin: 40px auto 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #ffb6e6, #6c63ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    box-shadow: 0 0 60px rgba(255,105,180,0.4);
+}
+
+#frase {
+    padding: 20px;
+    font-size: 15px;
+    color: #fff;
+    text-align: center;
+}
+
+/* 🔘 botón */
+button {
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    padding: 12px 25px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+</style>
+</head>
+
+<body>
+<!-- 🌌 MENÚ -->
+<button class="menu-btn" onclick="toggleMenu()">☰ Menú</button>
+
+<div class="menu" id="menu">
+    <a href="home.html"><div>🌸 Inicio</div></a>
+    <a href="galeria.html"><div>📸 Galería</div></a>
+    <a href="razones.html"><div>❤️ Razones</div></a>
+    <a href="musica.html"><div>🎵 Música</div></a>
+    <a href="triste.html"><div>🫂 Triste</div></a>
+    <a href="dudas.html"><div>🌟 Dudas</div></a>
+    <a href="nuestro universo.html"><div>🌌 Nuestro universo</div></a>
+    <a href="jaretbot.html"><div>🤖 JaretBot</div></a>
+    <a href="minijuegos.html"><div>🎮 Juegos</div></a>
+    <a href="final.html"><div>💖 Final</div></a>
+</div>
+<script>
+for (let i = 0; i < 120; i++) {
+    let star = document.createElement("div");
+    star.className = "star";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(star);
+}
+</script>
+
+
+<h1>🎵 Nuestra Musica 💗</h1>
+
+
+
+<!-- 🎵 CANCIONES -->
+<div class="musica-grid">
+
+<div class="card"><div class="song">After Dark</div><div class="artist">Mr. Kitty</div><div class="quote">Bésame antes de la oscuridad</div></div>
+<div class="card"><div class="song">Beautiful</div><div class="artist">Joji</div><div class="quote">Me hace pensar en ti</div></div>
+<div class="card"><div class="song">Like You Do</div><div class="artist">Joji</div><div class="quote">Ahora sí tiene sentido</div></div>
+<div class="card"><div class="song">Sanctuary</div><div class="artist">Joji</div><div class="quote">Porque eres mi santuario</div></div>
+<div class="card"><div class="song">DYKILY</div><div class="artist">Joji</div><div class="quote">¿No sabes que te amo?</div></div>
+<div class="card"><div class="song">Dark Beach</div><div class="artist">Pastel Ghost</div><div class="quote">Siempre estás en mi mente</div></div>
+<div class="card"><div class="song">Chachachá</div><div class="artist">Joséan Log</div><div class="quote">Solo quiero bailar contigo un chachacha</div></div>
+<div class="card"><div class="song">Alguien como tú</div><div class="artist">Joséan Log</div><div class="quote">No hay nadie como tú</div></div>
+<div class="card"><div class="song">You Rock My World</div><div class="artist">Michael Jackson</div><div class="quote">Eres mi mundo</div></div>
+<div class="card"><div class="song">Brillas</div><div class="artist">León Larregui</div><div class="quote">Siempre brillarás para mí</div></div>
+<div class="card"><div class="song">Karmadame</div><div class="artist">Zoé</div><div class="quote">Quiero verte feliz siempre</div></div>
+<div class="card"><div class="song">Frases Limón</div><div class="artist">Enanitos Verdes</div><div class="quote">Volveré por ti mi amor</div></div>
+<div class="card"><div class="song">Snowman</div><div class="artist">Sia</div><div class="quote">Ya no llores, ahora me tienes a mí</div></div>
+<div class="card"><div class="song">Melancolía</div><div class="artist">Mon Laferte</div><div class="quote">Yo te amo por los siglos de los huesos</div></div>
+<div class="card"><div class="song">Loco (Tu forma de ser)</div><div class="artist">Los Auténticos Decadentes</div><div class="quote">Me vuelve loco tu forma de ser</div></div>
+<div class="card"><div class="song">Eres</div><div class="artist">Café Tacvba</div><div class="quote">Simplemente eres</div></div>
+<div class="card"><div class="song">Pruébame a ti</div><div class="artist">Joséan Log</div><div class="quote">Yo sé que quieres amor y cosas bonitas</div></div>
+<div class="card"><div class="song">Beso</div><div class="artist">Joséan Log</div><div class="quote">Solo bésame</div></div>
+<div class="card"><div class="song">Locos</div><div class="artist">León Larregui</div><div class="quote">Ya no puedo vivir sin ti</div></div>
+<div class="card"><div class="song">Ojitos Lindos</div><div class="artist">Bad Bunny & Bomba Estéreo</div><div class="quote">Mi mirada cambio cuando tus ojos vi</div></div>
+<div class="card"><div class="song">Lovers Rock</div><div class="artist">TV Girl</div><div class="quote">El amor puede arder como un cigarro</div></div>
+<div class="card"><div class="song">There Is a Light That Never Goes Out</div><div class="artist">The Smiths</div><div class="quote">Morir a tu lado, es una forma celestial de morir</div></div>
+
+</div>
+
+<!-- 🫙 FRASCO -->
+<div class="frasco">
+    <div id="frase">💗 Tócame para un recuerdo</div>
+</div>
+
+<button onclick="mostrarFrase()">✨ Obtener recuerdo</button>
+
+<script>
+
+function toggleMenu(){
+    let menu = document.getElementById("menu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+
+/* 🫙 150 FRASES */
+const frases = [
+"Eres el lugar al que siempre quiero volver.",
+"Contigo entendí que amar no siempre duele.",
+"Gracias por existir y cruzarte en mi camino.",
+"Eres mi casualidad favorita.",
+"Me encanta saber que formas parte de mis días.",
+"Tu felicidad siempre será importante para mí.",
+"Quiero verte cumplir cada uno de tus sueños.",
+"Me haces sentir afortunado todos los días.",
+"Admiro la fuerza que tienes para seguir adelante.",
+"Me enamora tu manera de ver el mundo.",
+"Eres más valiente de lo que crees.",
+"Nunca dejaré de elegirte.",
+"Quiero acompañarte en cada etapa de tu vida.",
+"Tus abrazos tienen algo que calma todo.",
+"Me gusta la persona que soy cuando estoy contigo.",
+"Tu presencia mejora cualquier día malo.",
+"Eres mi pensamiento favorito.",
+"Amo la manera en que me haces sentir escuchado.",
+"Quiero ser alguien en quien siempre puedas confiar.",
+"Me encanta descubrir cosas nuevas de ti.",
+"Tus imperfecciones también son parte de lo que amo.",
+"Eres mucho más hermosa de lo que imaginas.",
+"Nunca te cambiaría por nadie.",
+"Quiero que siempre te sientas amada.",
+"Me encanta cuando hablas de las cosas que te gustan.",
+"Tu sonrisa merece ser protegida.",
+"Eres una de las mejores cosas que me han pasado.",
+"No quiero que cargues sola con tus problemas.",
+"Me gusta saber que puedo hacerte feliz.",
+"Me encanta cuando te emocionas por algo.",
+"Tu voz es una de mis melodías favoritas.",
+"Amo la forma en que me miras.",
+"Me haces creer que las cosas pueden salir bien.",
+"Quiero darte la tranquilidad que mereces.",
+"Nunca dejaré de admirarte.",
+"Me encanta que seas auténtica.",
+"No tienes que fingir ser alguien más conmigo.",
+"Siempre voy a querer conocerte más.",
+"Amo cada versión de ti.",
+"Eres hermosa incluso en tus días difíciles.",
+"Tu corazón es una de las cosas más bonitas que conozco.",
+"Quiero celebrar cada logro contigo.",
+"Siempre estaré orgulloso de ti.",
+"Tu compañía vale más que cualquier regalo.",
+"Amo cuando te ríes hasta que te duele el estómago.",
+"Me encanta verte tranquila.",
+"Tus ojos cuentan historias que quiero escuchar siempre.",
+"Eres mi lugar seguro.",
+"Me haces sentir en casa.",
+"Amo compartir mi tiempo contigo.",
+"Eres mi persona favorita.",
+"Gracias por quedarte.",
+"Quiero crecer contigo.",
+"Amo cuando me cuentas cómo te fue en tu día.",
+"Eres una razón para sonreír.",
+"Nunca me cansaré de escucharte.",
+"Tu existencia hace mi mundo más bonito.",
+"Quiero construir recuerdos contigo.",
+"Me encanta cuando te pones nerviosa.",
+"Eres especial de una forma que no puedo explicar.",
+"Me gusta cuidar de ti.",
+"Quiero que siempre te sientas importante.",
+"Amo tu sensibilidad.",
+"Amo tu forma de querer.",
+"Amo tu manera de preocuparte por los demás.",
+"Eres más fuerte de lo que piensas.",
+"Quiero ser parte de tus mejores recuerdos.",
+"Me encanta cuando me buscas.",
+"Amo cuando me haces sentir necesario.",
+"Me gusta cuando compartes tus pensamientos conmigo.",
+"Quiero darte miles de motivos para sonreír.",
+"Eres una luz en mi vida.",
+"Amo la forma en que enfrentas los problemas.",
+"Me encanta que seas diferente.",
+"No necesito una razón para pensarte.",
+"Quiero seguir aprendiendo a amarte.",
+"Amo cada minuto que paso contigo.",
+"Tu cariño significa mucho para mí.",
+"Eres una persona increíble.",
+"Nunca dejarás de sorprenderme.",
+"Quiero que siempre te sientas segura conmigo.",
+"Amo tus ocurrencias.",
+"Me encanta tu forma de expresarte.",
+"Eres hermosa cuando te emocionas.",
+"Amo verte disfrutar las cosas simples.",
+"Quiero acompañarte en tus días buenos y malos.",
+"Me encanta cuando me haces reír.",
+"Tu felicidad es importante para mí.",
+"Amo tus pequeños detalles.",
+"Quiero darte todo el amor que mereces.",
+"Eres una inspiración para mí.",
+"Amo tu ternura.",
+"Amo tu sinceridad.",
+"Amo tu manera de ser.",
+"Quiero ser alguien que te haga sentir orgullosa.",
+"Amo la confianza que me das.",
+"Me encanta cuando hablamos durante horas.",
+"Amo tu esencia.",
+"Quiero verte sonreír todos los días.",
+"Te amo por todo lo que eres.",
+"Prometo cuidar tu corazón como si fuera el mío.",
+"Prometo escucharte incluso cuando no encuentre palabras.",
+"Prometo quedarme cuando las cosas se compliquen.",
+"Prometo celebrar tus victorias como si fueran mías.",
+"Prometo apoyarte en tus sueños.",
+"Prometo nunca dejar de demostrarte cuánto te amo.",
+"Prometo respetarte siempre.",
+"Prometo aprender de mis errores.",
+"Prometo hacerte sentir especial.",
+"Prometo estar contigo cuando más me necesites.",
+"Prometo abrazarte cuando el mundo sea demasiado pesado.",
+"Prometo cuidar tus sentimientos.",
+"Prometo ser honesto contigo.",
+"Prometo seguir enamorándome de ti cada día.",
+"Prometo darte razones para confiar en mí.",
+"Prometo escuchar tus miedos.",
+"Prometo nunca burlarme de tus inseguridades.",
+"Prometo proteger tu sonrisa.",
+"Prometo caminar a tu lado.",
+"Prometo no rendirme contigo.",
+"Prometo intentar entenderte.",
+"Prometo ser paciente.",
+"Prometo respetar tus tiempos.",
+"Prometo acompañarte en tus peores días.",
+"Prometo estar orgulloso de ti.",
+"Prometo recordar lo valiosa que eres.",
+"Prometo hacerte sentir querida.",
+"Prometo elegirte una y otra vez.",
+"Prometo nunca dejar que te sientas sola.",
+"Prometo cuidar los recuerdos que construyamos.",
+"Prometo tomar tu mano cuando tengas miedo.",
+"Prometo darte tranquilidad.",
+"Prometo apoyarte cuando dudes de ti misma.",
+"Prometo recordarte lo hermosa que eres.",
+"Prometo seguir aprendiendo sobre ti.",
+"Prometo valorar cada momento juntos.",
+"Prometo respetar tus emociones.",
+"Prometo admirarte siempre.",
+"Prometo cuidar lo nuestro.",
+"Prometo amarte con hechos y no solo palabras.",
+"Prometo seguir aquí.",
+"Prometo ser tu refugio cuando lo necesites.",
+"Prometo darte mi mejor versión.",
+"Prometo crecer contigo.",
+"Prometo confiar en ti.",
+"Prometo agradecerte cada día.",
+"Prometo cuidar tus sueños.",
+"Prometo nunca dejar de intentarlo.",
+"Prometo darte mi tiempo.",
+"Prometo amarte cada día un poco más."
+];
+
+function mostrarFrase(){
+    let r = Math.floor(Math.random() * frases.length);
+    document.getElementById("frase").innerText = frases[r];
+}
+
+</script>
+
+</body>
+</html>

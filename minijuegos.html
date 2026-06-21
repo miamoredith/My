@@ -1,0 +1,468 @@
+<!DOCTYPE html> 
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minijuegos 💗</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial;
+    background: radial-gradient(circle at top, #050514, #0b0b2a, #000);
+    overflow:hidden;
+    color:white;
+}
+
+/* 🌟 estrellas */
+.star{
+    position:fixed;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    opacity:0.5;
+    animation: twinkle 4s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+    0%,100%{opacity:0.2;}
+    50%{opacity:1;}
+}
+
+/* ✨ partículas */
+.particle{
+    position:fixed;
+    width:3px;
+    height:3px;
+    background:rgba(255,255,255,0.6);
+    border-radius:50%;
+    pointer-events:none;
+    animation: floatParticle 8s linear infinite;
+}
+
+@keyframes floatParticle{
+    0%{transform:translateY(100vh);opacity:0;}
+    20%{opacity:0.8;}
+    100%{transform:translateY(-10vh);opacity:0;}
+}
+
+/* 🌸 título */
+h1{
+    text-align:center;
+    margin-top:10px;
+    color:#ffd6f3;
+    text-shadow:0 0 15px #ff7ac8;
+}
+
+/* 🎮 menú */
+.menu{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+    width:85%;
+    max-width:500px;
+}
+
+.game{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    padding:16px;
+    border-radius:18px;
+    text-align:center;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.game:hover{
+    transform:scale(1.03);
+    box-shadow:0 0 15px rgba(255,192,203,0.25);
+}
+
+/* 🌌 overlay */
+#gameScreen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    display:none;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter: blur(12px);
+}
+
+/* 💗 contenido modal */
+#content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:90%;
+    max-width:600px;
+    height:70vh;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:20px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 0 20px rgba(255,192,203,0.25);
+    overflow:auto;
+}
+
+/* ❌ cerrar */
+#close{
+    position:absolute;
+    top:70px;   /* 👈 antes era 15px, lo bajamos */
+    right:15px;
+    background:#cb2377;
+    border:none;
+    padding:10px 14px;
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
+    z-index:10000; /* 👈 asegura que esté arriba del menú */
+}
+/* 💗 corazones */
+.heart{
+    position:absolute;
+    font-size:26px;
+    cursor:pointer;
+    animation: fall linear forwards;
+}
+
+@keyframes fall{
+    from{transform:translateY(-10vh); opacity:1;}
+    to{transform:translateY(110vh); opacity:0;}
+}
+
+/* 🎴 memorama */
+.board{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-top:15px;
+}
+
+.card{
+    height:80px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    user-select:none;
+    transition:0.3s;
+    overflow:hidden;
+}
+
+.card span{
+    display:block;
+    font-size:22px;
+}
+
+.card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:none;
+}
+
+.card.flipped{
+    transform:scale(1.05);
+    background:rgba(255,192,203,0.18);
+}
+
+.card.flipped img{
+    display:block;
+}
+
+.card.flipped span{
+    display:none;
+}
+
+.card.matched{
+    background:rgba(0,255,150,0.15);
+    cursor:default;
+}
+
+/* =========================
+   🌸 MENU (AGREGADO)
+========================= */
+
+.menu-btn{
+    position:fixed;
+    top:15px;
+    right:15px;
+    padding:10px 14px;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:10px;
+    color:white;
+    cursor:pointer;
+    z-index:9999;
+}
+
+.menu-panel{
+    position:fixed;
+    top:55px;
+    right:15px;
+    width:220px;
+    background:rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:12px;
+    padding:10px;
+    display:none;
+    flex-direction:column;
+    gap:8px;
+    z-index:9999;
+}
+
+.menu-panel a{
+    color:white;
+    text-decoration:none;
+    padding:8px;
+    border-radius:8px;
+    background:rgba(255,255,255,0.08);
+}
+
+.menu-panel a:hover{
+    background:rgba(255,192,203,0.2);
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🎮 Minijuegos 💗 </h1>
+
+<!-- 🌸 MENU (AGREGADO) -->
+<button class="menu-btn" onclick="toggleMenu()">☰ Menú</button>
+
+<div class="menu-panel" id="menu">
+    <a href="home.html">🌸 inicio</a>
+    <a href="galeria.html">📸 Galería</a>
+    <a href="razones.html">❤️ Razones</a>
+    <a href="musica.html">🎵 Música</a>
+    <a href="triste.html">🫂 Triste</a>
+    <a href="dudas.html">🌟 Dudas</a>
+    <a href="nuestro universo.html">🌌 Universo</a>
+    <a href="jaretbot.html">🤖 JaretBot</a>
+    <a href="minijuegos.html">🎮 Juegos</a>
+    <a href="final.html">💖 Final</a>
+</div>
+
+<div class="menu">
+    <div class="game" onclick="openGame('corazones')">💗 Atrapa Corazones</div>
+    <div class="game" onclick="openGame('memorama')">🎴 Memorama</div>
+    <div class="game" onclick="openGame('estrellas')">🌟 Busca Estrellas</div>
+</div>
+
+<div id="gameScreen">
+    <button id="close" onclick="closeGame()">Cerrar ✖</button>
+    <div id="content"></div>
+</div>
+
+<script>
+
+/* 🌌 MENU FUNCIONAL (AGREGADO) */
+function toggleMenu(){
+    const menu = document.getElementById("menu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+
+/* 🌌 estrellas */
+for(let i=0;i<140;i++){
+    let s=document.createElement("div");
+    s.className="star";
+    s.style.top=Math.random()*100+"vh";
+    s.style.left=Math.random()*100+"vw";
+    document.body.appendChild(s);
+}
+
+/* ✨ partículas */
+for(let i=0;i<40;i++){
+    let p=document.createElement("div");
+    p.className="particle";
+    p.style.top=Math.random()*100+"vh";
+    p.style.left=Math.random()*100+"vw";
+    document.body.appendChild(p);
+}
+
+/* =========================
+   💗 ATRAPA CORAZONES
+========================= */
+
+let score = 0;
+let heartInterval = null;
+
+const messages = [
+"Te amo 💗",
+"Eres mi universo 💗",
+"No estás sola 💗",
+"Eres preciosa 💗",
+"Siempre contigo 💗"
+];
+
+/* =========================
+   🎮 OPEN GAME
+========================= */
+
+function openGame(type){
+
+    document.getElementById("gameScreen").style.display="block";
+
+    let content = document.getElementById("content");
+
+    stopHearts();
+
+    if(type==="corazones"){
+
+        score = 0;
+
+        content.innerHTML = `
+            <h2>💗 Atrapa Corazones</h2>
+            <p>Puntos: <span id="score">0</span></p>
+            <div id="msg"></div>
+        `;
+
+        startHearts();
+    }
+
+    if(type==="memorama"){
+
+        content.innerHTML = `
+            <h2>🎴 Memorama del Amor</h2>
+            <div class="board" id="board"></div>
+        `;
+
+        startMemory();
+    }
+
+    if(type==="estrellas"){
+        content.innerHTML = `<h2>🌟 Próximamente 💗</h2>`;
+    }
+}
+
+/* =========================
+   💗 CORAZONES
+========================= */
+
+function startHearts(){
+
+    heartInterval = setInterval(()=>{
+
+        let container = document.getElementById("content");
+
+        let h = document.createElement("div");
+        h.className = "heart";
+        h.innerText = "💗";
+
+        h.style.left = Math.random()*90 + "%";
+        h.style.top = "-10px";
+        h.style.animationDuration = (3 + Math.random()*2) + "s";
+
+        h.onclick = () => {
+
+            score++;
+            document.getElementById("score").innerText = score;
+
+            h.remove();
+
+            if(score % 5 === 0){
+                showMsg(messages[Math.floor(Math.random()*messages.length)]);
+            }
+        };
+
+        container.appendChild(h);
+
+        setTimeout(()=>h.remove(),6000);
+
+    },500);
+}
+
+function showMsg(text){
+    let msg = document.getElementById("msg");
+    msg.innerText = text;
+    msg.style.display = "block";
+    setTimeout(()=>msg.style.display="none",2000);
+}
+
+function stopHearts(){
+    clearInterval(heartInterval);
+}
+
+/* =========================
+   🎴 MEMORAMA
+========================= */
+
+let first=null, second=null, lock=false;
+
+const images=[
+"img1.jpg","img1.jpg",
+"img2.jpg","img2.jpg",
+"img3.jpg","img3.jpg",
+"img4.jpg","img4.jpg"
+];
+
+function startMemory(){
+
+    const board=document.getElementById("board");
+    let cards=[...images].sort(()=>Math.random()-0.5);
+
+    board.innerHTML="";
+
+    cards.forEach(src=>{
+        let card=document.createElement("div");
+        card.className="card";
+        card.dataset.value=src;
+
+        card.innerHTML=`<span>❓</span><img src="${src}">`;
+        card.onclick=()=>flip(card);
+
+        board.appendChild(card);
+    });
+}
+
+function flip(card){
+    if(lock || card.classList.contains("matched")) return;
+
+    card.classList.add("flipped");
+
+    if(!first){ first=card; return; }
+
+    second=card;
+    lock=true;
+
+    if(first.dataset.value===second.dataset.value){
+        first.classList.add("matched");
+        second.classList.add("matched");
+        first=second=null;
+        lock=false;
+    }else{
+        setTimeout(()=>{
+            first.classList.remove("flipped");
+            second.classList.remove("flipped");
+            first=second=null;
+            lock=false;
+        },700);
+    }
+}
+
+/* ❌ cerrar */
+function closeGame(){
+    document.getElementById("gameScreen").style.display="none";
+    stopHearts();
+}
+
+</script>
+
+</body>
+</html>

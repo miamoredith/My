@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galería 💗 Edith</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #1a1a40, #0b0b1f);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* 🌌 estrellas (IGUAL UNIVERSO) */
+.star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: blink 2.5s infinite;
+}
+
+@keyframes blink {
+    0%,100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.6); }
+}
+
+/* 🌌 MENÚ */
+.menu-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.menu {
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10;
+}
+
+.menu a { text-decoration: none; }
+
+.menu div {
+    width: 180px;
+    padding: 12px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+/* 💗 título */
+h1 {
+    text-align: center;
+    margin-top: 70px;
+    color: #ffd6f3;
+    text-shadow: 0 0 12px #ff7ac8;
+}
+
+/* 📸 grid */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    padding: 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* 💗 card */
+.card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 18px;
+    padding: 10px;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255,192,203,0.4);
+}
+
+.card img {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.card p {
+    font-size: 13px;
+    margin-top: 8px;
+    color: #ffffffcc;
+    line-height: 1.4;
+}
+
+/* 🌌 modal */
+.modal {
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.92);
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.modal img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌌 estrellas -->
+<script>
+for (let i = 0; i < 120; i++) {
+    let star = document.createElement("div");
+    star.className = "star";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(star);
+}
+</script>
+
+<!-- 🌌 BOTÓN MENÚ -->
+<button class="menu-btn" onclick="toggleMenu()">☰ Menú</button>
+
+<!-- 🌌 MENÚ -->
+<div class="menu" id="menu">
+    <a href="home.html"><div>🌸 inicio</div></a>
+    <a href="galeria.html"><div>📸 Galería</div></a>
+    <a href="razones.html"><div>❤️ Razones</div></a>
+    <a href="musica.html"><div>🎵 Música </div></a>
+    <a href="triste.html"><div>🫂 Triste</div></a>
+    <a href="dudas.html"><div>🌟 Dudas</div></a>
+    <a href="nuestro universo.html"><div>🌌 Nuestro universo</div></a>
+    <a href="jaretbot.html"><div>🤖 JaretBot</div></a>
+    <a href="minijuegos.html"><div>🎮 Juegos</div></a>
+    <a href="final.html"><div>💖 Final</div></a>
+    
+</div>
+
+<h1>📸 Nuestra Galería 💗</h1>
+
+<div class="galeria" id="galeria"></div>
+
+<div class="modal" id="modal" onclick="cerrar()">
+    <img id="imgModal">
+</div>
+
+<script>
+
+function toggleMenu(){
+    let menu = document.getElementById("menu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+
+// 🌸 30 fotos
+const fotos = [
+{img:"img/foto1.jpg", texto:"Eres la flor más hermosa del mundo, y aunque tengas espinas, siempre elegiré sostenerte con amor 💗"},
+{img:"img/foto2.jpg", texto:"Desde que llegaste, mis días volvieron a tener color ✨"},
+{img:"img/foto3.jpg", texto:"No sabía que alguien podía hacerme sentir tan amado hasta que te conocí 🌌"},
+{img:"img/foto4.jpg", texto:"Tu sonrisa tiene el poder de alegrar hasta mis peores días 💗"},
+{img:"img/foto5.jpg", texto:"Si volviera a vivir todo de nuevo, te volvería a elegir a ti 💕"},
+{img:"img/foto6.jpg", texto:"Me encanta verte feliz, porque tu felicidad también es la mía ✨"},
+{img:"img/foto7.jpg", texto:"Quiero conocerte por completo, incluso aquello que te ha lastimado, para aprender a amarte mejor 💗"},
+{img:"img/foto8.jpg", texto:"No eres mala, solo sufriste demasiado, y aun así sigues siendo maravillosa 🌌"},
+{img:"img/foto9.jpg", texto:"Me haces sentir querido de una forma que nunca había conocido 💕"},
+{img:"img/foto10.jpg", texto:"Tus ojos son los más hermosos del mundo para mí 💗"},
+{img:"img/foto11.jpg", texto:"No importa lo que pase, siempre tendrás mi mano para seguir adelante ✨"},
+{img:"img/foto12.jpg", texto:"Contigo aprendí a volver a creer en el amor 🌌"},
+{img:"img/foto13.jpg", texto:"Quiero darte todo el amor que algún día te faltó 💗"},
+{img:"img/foto14.jpg", texto:"Tu vida no te define, pero tu corazón hermoso sí ✨"},
+{img:"img/foto15.jpg", texto:"Me enamora tu forma de ser y la manera tan bonita en la que me tratas 💕"},
+{img:"img/foto16.jpg", texto:"Aunque tu amor fuera fuego, me quemaría una y mil veces por ti 💗"},
+{img:"img/foto17.jpg", texto:"No encuentro defectos en ti, porque amo todo lo que eres 🌌"},
+{img:"img/foto18.jpg", texto:"Ver tus ojitos iluminados por el sol siempre será una de mis cosas favoritas 💕"},
+{img:"img/foto19.jpg", texto:"Me duele verte triste, porque daría todo por verte sonreír 💗"},
+{img:"img/foto20.jpg", texto:"Eres la niña más fuerte que conozco, y te admiro muchísimo ✨"},
+{img:"img/foto21.jpg", texto:"No necesito nada más cuando estoy contigo 🌌"},
+{img:"img/foto22.jpg", texto:"Gracias por devolverle brillo a mi vida cuando creía haberlo perdido 💗"},
+{img:"img/foto23.jpg", texto:"Mi futuro ya no existe sin ti en él ✨"},
+{img:"img/foto24.jpg", texto:"Quiero que seas mi último amor y mi hogar para siempre 💕"},
+{img:"img/foto25.jpg", texto:"Tu risa y tu voz son cosas que jamás me cansaré de escuchar 💗"},
+{img:"img/foto26.jpg", texto:"Eres como yo, pero en niña, y eso me encanta 🌌"},
+{img:"img/foto27.jpg", texto:"Si tú eres feliz, entonces yo también lo soy 💕"},
+{img:"img/foto28.jpg", texto:"Cada momento contigo se convierte en uno de los mejores recuerdos de mi vida 💗"},
+{img:"img/foto29.jpg", texto:"Gracias por aparecer en mi vida de la forma más hermosa ✨"},
+{img:"img/foto30.jpg", texto:"Te amo por tu cuerpo, por tu alma, por tu mente y por todo lo que eres. Te amo completamente 💗"}
+
+];
+
+const galeria = document.getElementById("galeria");
+
+fotos.forEach(f => {
+    let card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+        <img src="${f.img}" onclick="abrir('${f.img}')">
+        <p>${f.texto}</p>
+    `;
+
+    galeria.appendChild(card);
+});
+
+function abrir(src){
+    document.getElementById("modal").style.display = "flex";
+    document.getElementById("imgModal").src = src;
+}
+
+function cerrar(){
+    document.getElementById("modal").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>

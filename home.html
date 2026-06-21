@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestro Universo 💗</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #1a1a40, #0b0b1f);
+    color: white;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* 🌌 estrellas */
+.star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: blink 2.5s infinite;
+}
+
+@keyframes blink {
+    0%,100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.6); }
+}
+
+/* 🌌 MENÚ ESQUINA SUPERIOR DERECHA */
+.menu-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.menu {
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10;
+}
+
+.menu a {
+    text-decoration: none;
+}
+
+.menu div {
+    width: 180px;
+    padding: 12px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+/* 💌 CARTA */
+.carta {
+    text-align: center;
+    margin-top: 80px;
+    padding: 25px;
+}
+
+.carta h1 {
+    font-size: 30px;
+    color: #ffd6f3;
+    text-shadow: 0 0 12px #ff7ac8;
+}
+
+.carta p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ffffffdd;
+    max-width: 800px;
+    margin: auto;
+}
+
+/* ⏳ RELOJ */
+#reloj {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.titulo-reloj {
+    font-size: 20px;
+    color: #ffd6f3;
+}
+
+.tiempo {
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1.6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌌 BOTÓN MENÚ -->
+<button class="menu-btn" onclick="toggleMenu()">☰ Menú</button>
+
+<!-- 🌌 MENÚ -->
+<div class="menu" id="menu">
+    
+    <a href="galeria.html"><div>📸 Galería</div></a>
+    <a href="razones.html"><div>❤️ Razones</div></a>
+    <a href="musica.html"><div>🎵 Música </div></a>
+    <a href="triste.html"><div>🫂 Triste</div></a>
+    <a href="dudas.html"><div>🌟 Dudas</div></a>
+    <a href="nuestro universo.html"><div>🌌 Nuestro universo</div></a>
+    <a href="jaretbot.html"><div>🤖 JaretBot</div></a>
+    <a href="minijuegos.html"><div>🎮 Juegos</div></a>
+    <a href="final.html"><div>💖 Final</div></a>
+    
+</div>
+
+<!-- 💌 CARTA REAL -->
+<div class="carta">
+    <h1>Edith 💗</h1>
+
+    <p>
+    Felices dos meses, mi vida hermosa. 💗<br><br>
+
+    Estos dos meses han sido increíbles. Cada momento, cada día y cada sonrisa a tu lado han sido algo hermoso, y me encanta pasar tiempo contigo. Espero que tú también seas tan feliz como yo lo soy a tu lado, y espero poder estar contigo toda mi vida.<br><br>
+
+    Sé que solo han sido dos meses, pero los he vivido muy feliz. Tal vez seamos muy jóvenes para prometernos amor eterno, pero también somos jóvenes para poder pasar juntos todo lo que nos queda de vida.<br><br>
+
+    Te amo con todo mi corazón; nunca dudes de eso. Gracias por hacerme tan feliz y por regalarme tantos momentos hermosos. Espero que este sea solo el comienzo de una historia muy larga a tu lado.<br><br>
+
+    Con amor, Jaret. 💗
+    </p>
+</div>
+
+<!-- ⏳ RELOJ -->
+<div id="reloj">
+    <div class="titulo-reloj">⏳ Nuestro tiempo juntos</div>
+    <div class="tiempo" id="tiempo"></div>
+</div>
+
+<script>
+
+// 🌌 estrellas
+for (let i = 0; i < 140; i++) {
+    let star = document.createElement("div");
+    star.className = "star";
+
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.left = Math.random() * 100 + "vw";
+
+    document.body.appendChild(star);
+}
+
+// ⏳ contador
+const inicio = new Date("2026-04-22");
+
+function actualizar() {
+    const ahora = new Date();
+    let diff = ahora - inicio;
+
+    let segundos = Math.floor(diff / 1000) % 60;
+    let minutos = Math.floor(diff / (1000 * 60)) % 60;
+    let horas = Math.floor(diff / (1000 * 60 * 60)) % 24;
+    let dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+    document.getElementById("tiempo").innerHTML =
+        `${dias} días 💗<br>${horas} horas 💗<br>${minutos} minutos 💗<br>${segundos} segundos`;
+}
+
+setInterval(actualizar, 1000);
+actualizar();
+
+// 🌌 menú toggle
+function toggleMenu() {
+    let menu = document.getElementById("menu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+
+</script>
+
+</body>
+</html>

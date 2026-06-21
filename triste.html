@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todo estará bien 💗 Edith</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: radial-gradient(circle at top, #0b0b1f, #1a1a40);
+    color: white;
+    overflow: hidden;
+}
+
+/* 🌟 estrellas */
+.star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: blink 3s infinite;
+}
+
+@keyframes blink {
+    0%,100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+/* 💗 contenedor */
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+h1 {
+    color: #ffd6f3;
+    text-shadow: 0 0 12px #ff7ac8;
+}
+
+.card {
+    max-width: 500px;
+    padding: 18px;
+    border-radius: 18px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    margin-top: 20px;
+}
+
+.big {
+    font-size: 28px;
+    color: #ffd6f3;
+    margin-top: 20px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.12);
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* 🫧 burbujas */
+.bubble {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    animation: float 8s linear infinite;
+    cursor: pointer;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+
+/* ✨ fade */
+@keyframes fade {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 🌌 MENÚ */
+.menu-btn{
+    position:fixed;
+    top:15px;
+    right:15px;
+    padding:10px 16px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    color:white;
+    font-size:14px;
+    cursor:pointer;
+    z-index:999;
+}
+
+.menu{
+    position:fixed;
+    top:60px;
+    right:15px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    z-index:999;
+
+    opacity:0;
+    transform: translateY(-10px);
+    pointer-events:none;
+    transition:0.3s ease;
+}
+
+.menu.show{
+    opacity:1;
+    transform: translateY(0);
+    pointer-events:auto;
+}
+
+.menu a{
+    text-decoration:none;
+}
+
+.menu a div{
+    color:white;
+    padding:10px 14px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    font-size:14px;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌌 MENÚ -->
+<button class="menu-btn" onclick="toggleMenu()">☰ Menú</button>
+
+<div class="menu" id="menu">
+    <a href="home.html"><div>🌸 Inicio</div></a>
+    <a href="galeria.html"><div>📸 Galería</div></a>
+    <a href="razones.html"><div>❤️ Razones</div></a>
+    <a href="musica.html"><div>🎵 Música</div></a>
+    <a href="triste.html"><div>🫂 Triste</div></a>
+    <a href="dudas.html"><div>🌟 Dudas</div></a>
+    <a href="nuestro universo.html"><div>🌌 Nuestro universo</div></a>
+    <a href="jaretbot.html"><div>🤖 JaretBot</div></a>
+    <a href="minijuegos.html"><div>🎮 Juegos</div></a>
+    <a href="final.html"><div>💖 Final</div></a>
+</div>
+
+<!-- 🌟 estrellas -->
+<script>
+for (let i = 0; i < 120; i++) {
+    let s = document.createElement("div");
+    s.className = "star";
+    s.style.top = Math.random() * 100 + "vh";
+    s.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(s);
+}
+</script>
+
+<div class="container">
+
+<h1>🌸 Todo estará bien 💗</h1>
+
+<div class="card" id="texto">Estoy aquí contigo 💗</div>
+
+<div class="big" id="respira">Presiona para empezar 🌬</div>
+
+<button onclick="iniciar()">💗 Empezar calma</button>
+
+</div>
+
+<script>
+
+/* 🌌 MENU */
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("show");
+}
+
+/* TU SISTEMA ORIGINAL */
+const frases = [
+"Tranquila mi amor, aquí estoy para ti 💗",
+"Se fuerte mi amor 💗",
+"No estás sola mi vida 💗",
+"Siempre estoy para ti 💗",
+"Tu puedes con esto y más 💗",
+"Te amo demasiado 💗",
+"No estoy contigo en este momento pero siempre estaré para ti 💗",
+"Respira y piensa en cosas bonitas 💗",
+"Te amo con todo mi corazón 💗"
+];
+
+const calmaFinal = [
+"Todo está en calma 💗",
+"Estás a salvo aquí 💗",
+"Respira lento… 💗",
+"Estoy contigo 💗",
+"Deja que todo pase 💗"
+];
+
+let paso = 0;
+let fase = 0;
+
+function iniciar(){
+    if(fase === 0){
+        fase = 1;
+        iniciarRespiracion();
+    }
+}
+
+function iniciarRespiracion(){
+    let r = document.getElementById("respira");
+
+    r.innerText = "Inhala... 🌬";
+
+    setTimeout(() => {
+        r.innerText = "Exhala... 💗";
+    }, 4000);
+
+    setTimeout(() => {
+        r.innerText = "Todo está bien 💗";
+    }, 8000);
+
+    setTimeout(() => {
+        fase = 2;
+        iniciarFrases();
+    }, 12000);
+}
+
+function iniciarFrases(){
+    document.getElementById("respira").innerText = "Estoy contigo 💗";
+    mostrarFrase();
+}
+
+function mostrarFrase(){
+    if(fase !== 2) return;
+
+    document.getElementById("texto").innerHTML =
+    `<div style="animation:fade 0.8s ease">${frases[paso]}</div>`;
+
+    paso++;
+
+    if(paso >= frases.length){
+        fase = 3;
+        iniciarBurbujas();
+        iniciarCalmaFinal();
+        return;
+    }
+
+    setTimeout(mostrarFrase, 5000);
+}
+
+function iniciarCalmaFinal(){
+    let i = 0;
+
+    function loop(){
+        document.getElementById("texto").innerHTML =
+        `<div style="animation:fade 1s ease">${calmaFinal[i]}</div>`;
+
+        i++;
+        if(i >= calmaFinal.length) i = 0;
+
+        setTimeout(loop, 6000);
+    }
+
+    loop();
+}
+
+function iniciarBurbujas(){
+    setInterval(() => {
+        let b = document.createElement("div");
+        b.className = "bubble";
+        b.style.left = Math.random() * 100 + "vw";
+
+        b.onclick = () => b.remove();
+
+        document.body.appendChild(b);
+
+        setTimeout(() => b.remove(), 8000);
+    }, 800);
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Razones 💗 Edith</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #1a1a40, #0b0b1f);
+    color: white;
+    overflow-x: hidden;
+}
+
+/* 🌌 estrellas (IGUAL QUE HOME) */
+.star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: blink 2.5s infinite;
+}
+
+@keyframes blink {
+    0%,100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.6); }
+}
+
+/* 🌌 MENÚ (igual estilo home) */
+.menu-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 10px 15px;
+    border-radius: 12px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    z-index: 10;
+}
+
+.menu {
+    position: absolute;
+    top: 60px;
+    right: 15px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10;
+}
+
+.menu a {
+    text-decoration: none;
+}
+
+.menu div {
+    width: 180px;
+    padding: 12px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: white;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+/* 💗 título */
+h1 {
+    text-align: center;
+    margin-top: 70px;
+    color: #ffd6f3;
+    text-shadow: 0 0 12px #ff7ac8;
+}
+
+.sub {
+    text-align: center;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    color: #ffffffaa;
+    font-size: 14px;
+}
+
+/* 💗 contenedor */
+.contenedor {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    padding: 25px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* ❤️ tarjetas */
+.card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 18px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+    backdrop-filter: blur(10px);
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+
+.card:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px rgba(255,192,203,0.4);
+}
+
+.texto {
+    font-size: 13px;
+    color: #ffffffdd;
+    line-height: 1.4;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌌 estrellas -->
+<script>
+for (let i = 0; i < 120; i++) {
+    let star = document.createElement("div");
+    star.className = "star";
+    star.style.top = Math.random() * 100 + "vh";
+    star.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(star);
+}
+</script>
+
+<!-- 🌌 MENÚ -->
+<button class="menu-btn" onclick="toggleMenu()">☰ Menú</button>
+
+<div class="menu" id="menu">
+    <a href="home.html"><div>🌸 Inicio</div></a>
+    <a href="galeria.html"><div>📸 Galería</div></a>
+    <a href="razones.html"><div>❤️ Razones</div></a>
+    <a href="musica.html"><div>🎵 Música</div></a>
+    <a href="triste.html"><div>🫂 Triste</div></a>
+    <a href="dudas.html"><div>🌟 Dudas</div></a>
+    <a href="nuestro universo.html"><div>🌌 Nuestro universo</div></a>
+    <a href="jaretbot.html"><div>🤖 JaretBot</div></a>
+    <a href="minijuegos.html"><div>🎮 Juegos</div></a>
+    <a href="final.html"><div>💖 Final</div></a>
+</div>
+
+<h1>❤️ Razones por las que te amo 💗</h1>
+<div class="sub">💗</div>
+
+<div class="contenedor" id="contenedor"></div>
+
+<script>
+
+function toggleMenu(){
+    let menu = document.getElementById("menu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+
+const razones = [
+"Porque tienes los ojos más hermosos del mundo 💖",
+"Porque tienes la carita más hermosa del mundo 🌸",
+"Porque tienes un pelo hermoso 🌷",
+"Porque te ves hermosa cuando ríes 😍",
+"Porque tienes una sonrisa hermosa 😊",
+"Porque me encanta el tono de tu risa 😂",
+"Porque me encanta la forma en que te ríes 💕",
+"Porque me encanta lo linda que suena tu voz 🎶",
+"Porque eres chaparrita y hermosa 🧸",
+"Porque me tratas como nadie más me trata 💗",
+"Porque te preocupas por mí 🫶",
+"Porque siento que de verdad te importo 💞",
+"Porque amo cuando me hablas bonito 💬",
+"Porque amo cuando te ves feliz ✨",
+"Porque si tú eres feliz yo soy feliz 🌈",
+"Porque daría todo para que estés bien 💝",
+"Porque daría todo para que seas feliz 💘",
+"Porque sé que has pasado cosas muy feas 🌧️",
+"Porque quiero cuidarte como nadie más 🛡️",
+"Porque me duele verte triste 💔",
+"Porque no eres mala, solo sufriste demasiado 🕊️",
+"Porque eres perfecta tal y como eres 💎",
+"Porque siempre eres y serás hermosa 🌹",
+"Porque no necesitas esconder quien eres en realidad 🌙",
+"Porque eres la niña más fuerte que conozco 💪",
+"Porque a pesar de todo nunca te rindes 🔥",
+"Porque siempre tienes una sonrisa 😊",
+"Porque siempre estás cuando más te necesito 🤍",
+"Porque siempre me has apoyado en todo 🤝",
+"Porque me encanta cómo se ven tus ojitos cuando les da el sol ☀️",
+"Porque te ves preciosa siempre 💐",
+"Porque estar a tu lado me hace muy feliz 💗",
+"Porque ver tu felicidad me da paz 🕊️",
+"Porque me encanta tu olor 🌺",
+"Porque me siento amado a tu lado 💞",
+"Porque me siento deseado a tu lado 💘",
+"Porque tu humor es tan tonto como el mío 😂",
+"Porque eres como yo pero en niña 🫶",
+"Porque tienes algo que me enamora 💓",
+"Porque siempre te ves bien 🌸",
+"Porque tienes un perrito 🐶",
+"Porque amo tu cuerpo 💗",
+"Porque amo tu mente 🧠",
+"Porque amo tus sentimientos 💕",
+"Porque amo tus problemas 🌧️",
+"Porque amo tu felicidad 🌈",
+"Porque amo tu tristeza 💔",
+"Porque amo tu alma ✨",
+"Porque amo todo de ti 💖"
+];
+
+const contenedor = document.getElementById("contenedor");
+
+razones.forEach((r) => {
+
+    let card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = "💗";
+
+    let abierto = false;
+
+    card.onclick = () => {
+        if (!abierto) {
+            card.innerHTML = `<div class="texto">${r}</div>`;
+        } else {
+            card.innerHTML = "💗";
+        }
+        abierto = !abierto;
+    };
+
+    contenedor.appendChild(card);
+});
+
+</script>
+
+</body>
+</html>
