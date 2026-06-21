@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestro Universo 💗 Edith</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial;
+    background: radial-gradient(circle at top, #050514, #0b0b2a, #000);
+    overflow:hidden;
+    color:white;
+}
+
+/* 🌟 estrellas */
+.star{
+    position:fixed;
+    width:2px;
+    height:2px;
+    background:white;
+    border-radius:50%;
+    opacity:0.5;
+    animation: twinkle 4s infinite ease-in-out;
+}
+
+@keyframes twinkle{
+    0%,100%{opacity:0.2;}
+    50%{opacity:1;}
+}
+
+/* ✨ partículas */
+.particle{
+    position:fixed;
+    width:3px;
+    height:3px;
+    background:rgba(255,255,255,0.6);
+    border-radius:50%;
+    pointer-events:none;
+    animation: floatParticle 8s linear infinite;
+}
+
+@keyframes floatParticle{
+    0%{transform: translateY(100vh);opacity:0;}
+    20%{opacity:0.8;}
+    100%{transform: translateY(-10vh);opacity:0;}
+}
+
+/* 🌌 universo */
+#universe{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    transform:scale(1) translate(0px,0px);
+    transform-origin:center;
+    transition: transform 0.1s;
+}
+
+/* ⭐ recuerdos */
+.memory{
+    position:absolute;
+    width:18px;
+    height:18px;
+    background: radial-gradient(circle,#fff,#ff7ac8);
+    border-radius:50%;
+    cursor:pointer;
+    box-shadow:0 0 12px #ff7ac8;
+    transition: all 0.3s ease;
+}
+
+/* 💗 abierto */
+.memory.open{
+    width:210px;
+    padding:12px;
+    height:auto;
+    border-radius:18px;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    box-shadow:0 0 20px rgba(255,192,203,0.3);
+}
+
+.memory img{
+    width:100%;
+    border-radius:12px;
+    margin-top:8px;
+    display:none;
+}
+
+.memory.open img{display:block;}
+
+.memory p{
+    font-size:12px;
+    display:none;
+    color:#ffffffcc;
+}
+
+.memory.open p{display:block;}
+
+/* 🌸 título */
+h1{
+    text-align:center;
+    margin-top:10px;
+    font-size:26px;
+    color:#ffd6f3;
+    text-shadow:0 0 15px #ff7ac8;
+}
+
+/* 🌌 MENU */
+.menu-btn{
+    position:fixed;
+    top:15px;
+    right:15px;
+    padding:10px 16px;
+    border-radius:10px;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(10px);
+    color:white;
+    font-size:14px;
+    cursor:pointer;
+    z-index:999;
+}
+
+/* 📋 MENU */
+.menu{
+    position:fixed;
+    top:60px;
+    right:15px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    z-index:999;
+
+    opacity:0;
+    transform: translateY(-10px);
+    pointer-events:none;
+    transition:0.3s ease;
+}
+
+.menu.show{
+    opacity:1;
+    transform: translateY(0);
+    pointer-events:auto;
+}
+
+.menu a{
+    text-decoration:none;
+}
+
+.menu a div{
+    color:white;
+    padding:10px 14px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    font-size:14px;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌌 MENÚ -->
+<button class="menu-btn" onclick="toggleMenu()">☰ Menú</button>
+
+<div class="menu" id="menu">
+    <a href="home.html"><div>🌸 Inicio</div></a>
+    <a href="galeria.html"><div>📸 Galería</div></a>
+    <a href="razones.html"><div>❤️ Razones</div></a>
+    <a href="musica.html"><div>🎵 Música</div></a>
+    <a href="triste.html"><div>🫂 Triste</div></a>
+    <a href="dudas.html"><div>🌟 Dudas</div></a>
+    <a href="nuestro universo.html"><div>🌌 Nuestro universo</div></a>
+    <a href="jaretbot.html"><div>🤖 JaretBot</div></a>
+    <a href="minijuegos.html"><div>🎮 Juegos</div></a>
+    <a href="final.html"><div>💖 Final</div></a>
+</div>
+
+<h1>🌌 Nuestro Universo 💗</h1>
+
+<div id="universe"></div>
+
+<script>
+
+/* 🌌 MENU */
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("show");
+}
+
+/* ⭐ recuerdos */
+const memories = [
+{title:"18 febrero 2026 💗",desc:"El comienzo de todo.",img:"img1/img1.jpg"},
+{title:"3 marzo 2026 💗",desc:"Nuestro primer beso.",img:"img1/img2.jpg"},
+{title:"30 marzo 2026 💗",desc:"Nuestra primera cita.",img:"img1/img3.jpg"},
+{title:"22 abril 2026 💗",desc:"Nos hicimos novios.",img:"img1/img4.jpg"},
+{title:"2 junio 2026 💗",desc:"Tu cumpleaños 💗",img:"img1/img5.jpg"}
+];
+
+/* 🌟 estrellas */
+for(let i=0;i<140;i++){
+    let s=document.createElement("div");
+    s.className="star";
+    s.style.top=Math.random()*100+"vh";
+    s.style.left=Math.random()*100+"vw";
+    s.style.animationDuration=(2+Math.random()*4)+"s";
+    document.body.appendChild(s);
+}
+
+/* ✨ partículas */
+for(let i=0;i<40;i++){
+    let p=document.createElement("div");
+    p.className="particle";
+    p.style.top=Math.random()*100+"vh";
+    p.style.left=Math.random()*100+"vw";
+    p.style.animationDuration=(5+Math.random()*6)+"s";
+    p.style.opacity=Math.random();
+    document.body.appendChild(p);
+}
+
+const universe=document.getElementById("universe");
+
+let scale=1;
+let posX=0;
+let posY=0;
+let isDragging=false;
+let startX=0;
+let startY=0;
+
+let opened=null;
+
+/* ⭐ crear recuerdos */
+memories.forEach((m,i)=>{
+
+    let el=document.createElement("div");
+    el.className="memory";
+
+    let angle=(i/memories.length)*Math.PI*2;
+    let radius=32;
+
+    el.style.top=(50+Math.sin(angle)*radius)+"vh";
+    el.style.left=(50+Math.cos(angle)*radius)+"vw";
+
+    el.innerHTML=`
+        <p>${m.title}</p>
+        <p>${m.desc}</p>
+        <img src="${m.img}">
+    `;
+
+    el.onclick=()=>{
+
+        if(opened && opened!==el){
+            opened.classList.remove("open");
+        }
+
+        el.classList.toggle("open");
+        opened=el.classList.contains("open")?el:null;
+    };
+
+    universe.appendChild(el);
+});
+
+/* 🔍 ZOOM */
+window.addEventListener("wheel",(e)=>{
+    if(e.deltaY<0) scale+=0.08;
+    else scale-=0.08;
+
+    scale=Math.min(Math.max(1,scale),2);
+
+    universe.style.transform=
+    `scale(${scale}) translate(${posX}px,${posY}px)`;
+});
+
+/* 🖐️ DRAG */
+document.addEventListener("mousedown",(e)=>{
+    isDragging=true;
+    startX=e.clientX-posX;
+    startY=e.clientY-posY;
+});
+
+document.addEventListener("mousemove",(e)=>{
+    if(!isDragging) return;
+
+    posX=e.clientX-startX;
+    posY=e.clientY-startY;
+
+    universe.style.transform=
+    `scale(${scale}) translate(${posX}px,${posY}px)`;
+});
+
+document.addEventListener("mouseup",()=>isDragging=false);
+
+</script>
+
+</body>
+</html>
